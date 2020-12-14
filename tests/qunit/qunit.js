@@ -27,7 +27,7 @@ var defined = {
 var	testId = 0,
 	toString = Object.prototype.toString,
 	hasOwn = Object.prototype.hasOwnProperty;
-
+//Create test 
 var Test = function(name, testName, expected, async, callback) {
 	this.name = name;
 	this.testName = testName;
@@ -36,6 +36,7 @@ var Test = function(name, testName, expected, async, callback) {
 	this.callback = callback;
 	this.assertions = [];
 };
+//test prototype
 Test.prototype = {
 	init: function() {
 		var tests = id("qunit-tests");
@@ -194,7 +195,7 @@ Test.prototype = {
 			b.innerHTML = this.name + " <b class='counts'>(<b class='failed'>" + bad + "</b>, <b class='passed'>" + good + "</b>, " + this.assertions.length + ")</b>";
 
 			var a = document.createElement("a");
-			a.innerHTML = "Rerun";
+			a.innerHTML = "Run";
 			a.href = QUnit.url({ filter: getText([b]).replace(/\([^)]+\)$/, "").replace(/(^\s*|\s*$)/g, "") });
 
 			addEvent(b, "click", function() {
@@ -271,7 +272,7 @@ Test.prototype = {
 	}
 
 };
-
+//Create function
 var QUnit = {
 
 	// call on start of module test to prepend name to all tests
@@ -549,9 +550,6 @@ extend(QUnit, {
 		if ( qunit ) {
 			qunit.innerHTML =
 				'<h1 id="qunit-header">' + escapeInnerText( document.title ) + '</h1>' +
-				'<h2 id="qunit-banner"></h2>' +
-				'<div id="qunit-testrunner-toolbar"></div>' +
-				'<h2 id="qunit-userAgent"></h2>' +
 				'<ol id="qunit-tests"></ol>';
 		}
 
@@ -754,11 +752,11 @@ QUnit.load = function() {
 	config.blocking = false;
 
 	var urlConfigHtml = '', len = config.urlConfig.length;
-	for ( var i = 0, val; i < len; i++ ) {
-		val = config.urlConfig[i];
-		config[val] = QUnit.urlParams[val];
-		urlConfigHtml += '<label><input name="' + val + '" type="checkbox"' + ( config[val] ? ' checked="checked"' : '' ) + '>' + val + '</label>';
-	}
+	// for ( var i = 0, val; i < len; i++ ) {
+	// 	val = config.urlConfig[i];
+	// 	config[val] = QUnit.urlParams[val];
+	// 	urlConfigHtml += '<label><input name="' + val + '" type="checkbox"' + ( config[val] ? ' checked="checked"' : '' ) + '>' + val + '</label>';
+	// }
 
 	var userAgent = id("qunit-userAgent");
 	if ( userAgent ) {
@@ -774,7 +772,7 @@ QUnit.load = function() {
 		});
 	}
 
-	var toolbar = id("qunit-testrunner-toolbar");
+	var toolbar = null;
 	if ( toolbar ) {
 		var filter = document.createElement("input");
 		filter.type = "checkbox";

@@ -136,14 +136,11 @@
       bitsToRead = 2;
       padding = 0;
     }
-
     while (bitsToRead--) {
       var D = decodeBit();
       V = (V << 1) | D;
     }
-
     V += padding;
-
     return S === 0 ? arithValue(V) : (V > 0 ? arithValue(-V) : OOB);
   };
 
@@ -351,7 +348,6 @@
         var SLTP = decode(ctx);
         LTP ^= SLTP;
       }
-
       if (LTP === 1) {
         // copy row above
         bitmap[i] = Array.apply([], bitmap[i - 1]);
@@ -368,7 +364,6 @@
         }
       }
     }
-
     return bitmap;
   };
 
