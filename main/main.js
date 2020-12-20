@@ -272,25 +272,25 @@ module("Segment Header");
 //   equal(header.pageAssociation, 1025);
 // });
 
-// test("spec annex H example", function () {
-//   var buffer = JBIG2.streamFrom(new Uint8Array([
-//     0x00, 0x00, 0x00, 0x00, // segment number
-//     0x00,                   // header flags
-//     0x01,                   // referred-to segment count and retention flags
-//     0x00,                   // page association size
-//     0x00, 0x00, 0x00, 0x18  // segment data length
-//   ]));
-//   var header = JBIG2.parseSegmentHeader(buffer);
+test("spec annex H example", function () {
+  var buffer = JBIG2.streamFrom(new Uint8Array([
+    0x00, 0x00, 0x00, 0x00, // segment number
+    0x00,                   // header flags
+    0x01,                   // referred-to segment count and retention flags
+    0x00,                   // page association size
+    0x00, 0x00, 0x00, 0x18  // segment data length
+  ]));
+  var header = JBIG2.parseSegmentHeader(buffer);
 
-//   equal(header.number, 0);
-//   equal(header.flags.segmentType, JBIG2.segmentTypes.SYMBOL_DICTIONARY);
-//   equal(header.flags.pageAssociationSizeInBytes, 1);
-//   equal(header.flags.deferredNonRetain, false);
-//   equal(header.refSegmentCountAndRetentionFlags.refSegmentCount, 0);
-//   equal(header.refSegmentCountAndRetentionFlags.retentionFlags, 0x01);
-//   equal(header.pageAssociation, 0);
-//   equal(header.dataLength, 24);
-// });
+  equal(header.number, 0);
+  equal(header.flags.segmentType, JBIG2.segmentTypes.SYMBOL_DICTIONARY);
+  equal(header.flags.pageAssociationSizeInBytes, 1);
+  equal(header.flags.deferredNonRetain, false);
+  equal(header.refSegmentCountAndRetentionFlags.refSegmentCount, 0);
+  equal(header.refSegmentCountAndRetentionFlags.retentionFlags, 0x01);
+  equal(header.pageAssociation, 0);
+  equal(header.dataLength, 24);
+});
 
 
 module("Symbol Dictionary Segment");
